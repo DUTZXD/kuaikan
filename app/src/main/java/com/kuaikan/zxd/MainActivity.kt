@@ -2,6 +2,7 @@ package com.kuaikan.zxd
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         recyclerView = findViewById(R.id.manhuaRv)
+        recyclerView.adapter = ManHuaAdapter()
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://www.kuaikanmanhua.com/v2/pweb/daily/topics")
@@ -30,16 +33,16 @@ class MainActivity : AppCompatActivity() {
                 val bean = response.body()
                 if (bean != null) {
                     val data = bean.data
-                    //                    data.optJSONArray();
+                    data.optJSONArray()
                     runOnUiThread {
-                        val adapter = recyclerView.getAdapter() as ManHuaAdapter?
-                        adapter!!.setData()
+                        val adapter = recyclerView.adapter as ManHuaAdapter
+                        adapter.setData()
                     }
                 }
             }
 
             override fun onFailure(call: Call<ManhuaBean?>, t: Throwable) {}
         })
-        val adapter = ManHuaAdapter()
+
     }
 }
