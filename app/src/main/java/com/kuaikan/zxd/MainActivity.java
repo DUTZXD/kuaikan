@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ManhuaService manhuaService = retrofit.create(ManhuaService.class);
-        Call<ManhuaBean> call = manhuaService.getManhuaUpdate(0);
+        Call<ManhuaBean> call = manhuaService.getDailyUpdate(0);
         call.enqueue(new Callback<ManhuaBean>() {
             @Override
             public void onResponse(Call<ManhuaBean> call, Response<ManhuaBean> response) {

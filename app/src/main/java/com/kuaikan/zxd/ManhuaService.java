@@ -12,5 +12,5 @@ import retrofit2.http.Query;
 public interface ManhuaService {
 
     @GET("/daily/topics")
-    Call<ManhuaBean> getManhuaUpdate(@Query("pos") int pos);
+    Call<ManhuaBean> getDailyUpdate(@Query("pos") int pos);
 }
