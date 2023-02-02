@@ -1,13 +1,13 @@
-package com.kuaikan.zxd;
+package com.kuaikan.zxd
 
-import org.json.JSONObject;
+import org.json.JSONObject
 
 /**
  * @auther: zhangxiaodong91
  * @date: 2023/2/2
  */
-public class ManhuaBean {
-    public String code;
-    public String message;
-    JSONObject data;
+class ManhuaBean {
+    lateinit var code: String
+    lateinit var message: String
+    lateinit var data: JSONObject
 }

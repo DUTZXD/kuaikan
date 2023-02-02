@@ -1,8 +1,9 @@
-package com.kuaikan.zxd;
+package com.kuaikan.zxd
 
 /**
  * @auther: zhangxiaodong91
  * @date: 2023/2/2
  */
-public class ManhuaEntity {
+class ManhuaEntity {
+
 }

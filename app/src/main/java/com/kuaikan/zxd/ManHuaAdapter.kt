@@ -1,44 +1,33 @@
-package com.kuaikan.zxd;
+package com.kuaikan.zxd
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import java.util.*
 
 /**
  * @auther: zhangxiaodong91
  * @date: 2023/2/1
  */
-public class ManHuaAdapter extends RecyclerView.Adapter<ManViewHolder> {
+class ManHuaAdapter : RecyclerView.Adapter<ManHuaViewHolder>() {
+    private var data = ArrayList<ManhuaEntity>()
 
-    private ArrayList<ManhuaEntity> data = new ArrayList<>();
-
-    @NonNull
-    @Override
-    public ManViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.manhua_item_layout, parent, false);
-        return new ManViewHolder(itemView);
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ManHuaViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.manhua_item_layout, parent, false)
+        return ManHuaViewHolder(itemView)
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull ManViewHolder holder, int position) {
-        ManhuaEntity entity = data.get(position);
-        holder.bindData(entity);
+    override fun onBindViewHolder(holder: ManHuaViewHolder, position: Int) {
+        val entity = data[position]
+        holder.bindData(entity)
     }
 
-    @Override
-    public int getItemCount() {
-        return data.size();
+    override fun getItemCount(): Int {
+        return data.size
     }
 
-    public void setData(ArrayList<ManhuaEntity> newData) {
-        data = newData;
-        notifyDataSetChanged();
+    fun setData(newData: ArrayList<ManhuaEntity>) {
+        data = newData
+        notifyDataSetChanged()
     }
 }
